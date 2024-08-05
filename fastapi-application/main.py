@@ -12,6 +12,11 @@ from core.models import db_helper
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup
+    # для тестирования
+    # async with db_helper.engine.begin() as conn:
+    #     await conn.run_sync(Base.metadata.create_all)
+    #     await conn.run_sync(Base.metadata.drope_all)
+
     yield
     # shutdown
     print("dispose engine")

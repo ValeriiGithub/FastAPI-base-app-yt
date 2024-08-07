@@ -1,0 +1,19 @@
+ poetry add fastapi "uvicorn[standart]" "pydantic[email]" pydantic-settings
+
+uvicorn main:app --reload
+
+uvicorn main:app --host 0.0.0.0 --reload
+
+docker compose up -d pg
+docker compose ps
+
+alembic init -t async alembic
+
+black --diff --color ./
+
+alembic revision --autogenerate -m "create users table"
+alembic upgrade head
+
+alembic downgrade base
+
+alembic downgrade -1
